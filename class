@@ -1,0 +1,57 @@
+package ketang;
+
+import java.lang.*;
+public class Complex{
+
+    public void setRealpart(double R){
+        RealPart = R;
+    }
+    public double getRealPart(){
+        return RealPart;
+    }
+    public void setImagePart(double I){
+        ImagePart=I;
+    }
+    public double getImagePart(){
+        return ImagePart;
+    }
+
+
+    double RealPart;
+    double ImagePart ;
+
+
+    public Complex (double R,double I){
+        RealPart =R;
+        ImagePart = I;
+    }
+    public boolean equals(Complex xxx){
+        if(this.getRealPart() ==xxx.getRealPart() && this.getImagePart() ==xxx.getImagePart() ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    @Override
+    public String toString(){
+        return RealPart + "+"+ImagePart +"i";
+    }
+
+    public Complex  ComplexAdd(Complex a){
+        return new Complex(this.RealPart +a.RealPart ,this.ImagePart +a.ImagePart );
+    }
+    public Complex ComplexSub(Complex a){
+        return new Complex(this.RealPart -a.RealPart ,this.ImagePart -a.ImagePart );
+    }
+    public Complex ComplexMulti(Complex a){
+        return new Complex(this.RealPart *a.RealPart -this.ImagePart *a.ImagePart,this.RealPart *a.ImagePart +this.ImagePart *a.RealPart  );
+    }
+    public Complex ComplexDiv(Complex a){
+        double m = this.RealPart ;
+        double n = this.ImagePart ;
+        double o = a.RealPart ;
+        double p = a.ImagePart ;
+        return new Complex((n*m+o*p)/(o*o+p*p),(n*o-m*p)/(o*o+p*p));
+    }
+
+}
